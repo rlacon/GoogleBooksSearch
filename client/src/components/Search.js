@@ -22,9 +22,9 @@ class Search extends React.Component {
 
     makeAPICall = () => {
         console.log("makeAPICall: " + this.state.search_term)
-        API.getBook("test")
+        API.getBook("Harry Potter")
             // .then(res => this.setState({ books: res.data }))
-            .then(res => console.log(res))
+            .then(res => console.log(res.data.items))
             .catch(err => console.log(err));
     }
 

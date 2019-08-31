@@ -11,7 +11,7 @@ module.exports = {
         //   .then(dbModel => res.json(dbModel))
         //   .catch(err => res.status(422).json(err));
     },
-    
+
     findBySearchTerm: function (req, res) {
         // Let's connect to Google
         console.log("in findBySearchTerm: " + req.body)
