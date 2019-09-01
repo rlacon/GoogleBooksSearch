@@ -1,6 +1,8 @@
 import React from "react";
 import API from "../utils/API";
-import Item from "./Item";
+import BookResults from "./BookResults";
+import Button from 'react-bootstrap/Button';
+
 
 
 class Search extends React.Component {
@@ -45,9 +47,8 @@ class Search extends React.Component {
                     <input type="submit" value="Submit" />
                 </form>
                 <h1>Book Results</h1>
-                {this.state.books.map((item, key) =>
-                    <Item item={item} key={item.id} />
-                )}
+                <BookResults books={this.state.books} />
+                
             </div>
         )
     }
