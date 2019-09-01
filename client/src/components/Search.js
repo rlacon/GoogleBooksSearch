@@ -1,12 +1,14 @@
 import React from "react";
 import API from "../utils/API";
+import Item from "./Item";
+
 
 class Search extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { search_term: '' }
         this.state = {
-            'items': []
+            books: [],
+            search_term: ""
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -26,7 +28,8 @@ class Search extends React.Component {
     makeAPICall = () => {
         console.log("makeAPICall: " + this.state.search_term)
         API.getBook(this.state.search_term)
-            .then(res => console.log(res.data.items))
+            .then(res => this.setState({ books: res.data.items }))
+            .then(res => console.log(this.state.books))
             .catch(err => console.log(err));
     }
 
@@ -42,7 +45,9 @@ class Search extends React.Component {
                     <input type="submit" value="Submit" />
                 </form>
                 <h1>Book Results</h1>
-
+                {this.state.books.map((item, key) =>
+                    <Item item={item} key={item.id} />
+                )}
             </div>
         )
     }
