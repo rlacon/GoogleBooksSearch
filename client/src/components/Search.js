@@ -5,6 +5,9 @@ class Search extends React.Component {
     constructor(props) {
         super(props)
         this.state = { search_term: '' }
+        this.state = {
+            'items': []
+        }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.makeAPICall = this.makeAPICall.bind(this)
@@ -22,22 +25,25 @@ class Search extends React.Component {
 
     makeAPICall = () => {
         console.log("makeAPICall: " + this.state.search_term)
-        API.getBook("Harry Potter")
-            // .then(res => this.setState({ books: res.data }))
+        API.getBook(this.state.search_term)
             .then(res => console.log(res.data.items))
             .catch(err => console.log(err));
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input
-                    type="text"
-                    // value={this.state.search_term}
-                    onChange={this.handleChange}
-                />
-                <input type="submit" value="Submit" />
-            </form>
+            <div className="container">
+                <form onSubmit={this.handleSubmit}>
+                    <input
+                        type="text"
+                        value={this.state.search_term}
+                        onChange={this.handleChange}
+                    />
+                    <input type="submit" value="Submit" />
+                </form>
+                <h1>Book Results</h1>
+
+            </div>
         )
     }
 }

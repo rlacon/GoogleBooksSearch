@@ -4,9 +4,7 @@ function Results(props) {
 
     return (
         <div>
-            <container>
-                
-            </container>
+
         </div>
     )
 
