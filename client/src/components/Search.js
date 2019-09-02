@@ -4,7 +4,6 @@ import BookResults from "./BookResults";
 import Jumbotron from "./Jumbotron";
 import Navbar from "./Navbar";
 
-
 class Search extends React.Component {
     constructor(props) {
         super(props)
@@ -44,7 +43,7 @@ class Search extends React.Component {
                         <Navbar />
                         <nav class="navbar">
                             <a href="/index" class="navbar-brand"><img src={require("../images/Google_Books_logo_2015.svg")} width="100" height="auto" class="d-inline-block align-top" alt="" />
-                                </a>
+                            </a>
                             <form onSubmit={this.handleSubmit} class="form-inline">
                                 <input
                                     class="form-control mr-sm-2"

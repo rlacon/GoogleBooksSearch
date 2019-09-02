@@ -10,6 +10,7 @@ body {
     background-color: white;
     border-radius: 7px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    margin-bottom: 40px;
 }
 
 .jumbotron-fluid {
@@ -79,4 +80,11 @@ p {
 
 .bookResult {
     margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+    .form-inline .form-control {
+        width: 225px;
+        margin-right: 5px;
+    }
 }
