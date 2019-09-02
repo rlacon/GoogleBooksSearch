@@ -1,8 +1,8 @@
 import React from "react";
 import API from "../utils/API";
 import BookResults from "./BookResults";
-import Button from 'react-bootstrap/Button';
-
+import Jumbotron from "./Jumbotron";
+import Navbar from "./Navbar";
 
 
 class Search extends React.Component {
@@ -38,17 +38,27 @@ class Search extends React.Component {
     render() {
         return (
             <div className="container">
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                        type="text"
-                        value={this.state.search_term}
-                        onChange={this.handleChange}
-                    />
-                    <input type="submit" value="Submit" />
-                </form>
-                <h1>Book Results</h1>
-                <BookResults books={this.state.books} />
-                
+                <div className="row">
+                    <div className="col">
+                        {/* <Jumbotron /> */}
+                        <Navbar />
+                        <nav class="navbar">
+                            <a href="/index" class="navbar-brand"><img src={require("../images/Google_Books_logo_2015.svg")} width="100" height="auto" class="d-inline-block align-top" alt="" />
+                                </a>
+                            <form onSubmit={this.handleSubmit} class="form-inline">
+                                <input
+                                    class="form-control mr-sm-2"
+                                    type="search"
+                                    value={this.state.search_term}
+                                    onChange={this.handleChange}
+                                    placeholder="Enter a book title"
+                                    aria-label="Search" />
+                                <button class="btn" type="submit">Search</button>
+                            </form>
+                        </nav>
+                        <BookResults books={this.state.books} />
+                    </div>
+                </div>
             </div>
         )
     }

@@ -1,0 +1,82 @@
+body {
+    background-color: #F7F7F7;
+}
+
+.navbar-brand {
+    font-family: 'Roboto', sans-serif;
+}
+
+.bookResults {
+    background-color: white;
+    border-radius: 7px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.jumbotron-fluid {
+    margin-bottom: 0;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.form-inline .form-control {
+    width: 300px;
+}
+
+.btn {
+    background-color: #3183C9;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+a {
+    color: #333333;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #333333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h1 {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+nav {
+    background-color: #F7F7F7;
+}
+
+.bg-light {
+    background-color: #F7F7F7!important;
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+    margin: auto;
+    color: #3183C9;
+}
+
+h4 {
+    font-family: 'Roboto', sans-serif;
+    color: #21242A;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    color: #21242A;
+}
+
+#book-description {
+    font-family: 'Roboto', sans-serif;
+    color: #495057;
+}
+
+.bookResult {
+    margin-top: 2rem;
+}
