@@ -25,16 +25,6 @@ module.exports = {
             lang: 'en'
         };
 
-        //   books.search('Professional JavaScript for Web Developers', function(error, results) {
-        //     if ( ! error ) {
-        //         console.log("----------------------------------")
-        //         console.log(results);
-        //         console.log("----------------------------------")
-        //     } else {
-        //         console.log(error);
-        //     }
-        // });
-
         books.search("Professional JavaScript for Web Developers", options, function (error, results, apiResponse) {
             if (!error) {
                 console.log("----------------------------------")

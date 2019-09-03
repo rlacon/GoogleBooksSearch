@@ -1,7 +1,6 @@
 import React from "react";
 import API from "../utils/API";
 import BookResults from "./BookResults";
-import Jumbotron from "./Jumbotron";
 import Navbar from "./Navbar";
 
 class Search extends React.Component {
@@ -39,10 +38,9 @@ class Search extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        {/* <Jumbotron /> */}
                         <Navbar />
                         <nav class="navbar">
-                            <a href="/index" class="navbar-brand"><img src={require("../images/Google_Books_logo_2015.svg")} width="100" height="auto" class="d-inline-block align-top" alt="" />
+                            <a href="/index" class="navbar-brand"><img src={require("../images/Google_Books_logo_2015.svg")} width="100" height="auto" class="d-inline-block align-top" alt="Google Books logo" />
                             </a>
                             <form onSubmit={this.handleSubmit} class="form-inline">
                                 <input
