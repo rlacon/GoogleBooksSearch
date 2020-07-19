@@ -2,6 +2,7 @@ import React from "react";
 import API from "../utils/API";
 import BookResults from "./BookResults";
 import Navbar from "./Navbar";
+import Loader from "./Loader";
 
 class Search extends React.Component {
   constructor(props) {
@@ -32,7 +33,6 @@ class Search extends React.Component {
 
   makeAPICall = () => {
     console.log("makeAPICall: " + this.state.search_term)
-    debugger;
     API.getBook(this.state.search_term)
       .then(
         (res) => {
@@ -55,12 +55,10 @@ class Search extends React.Component {
 
   render() {
     const { error, isLoaded, books } = this.state;
-    debugger;
     if (error) {
       return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
+    }
+    else {
       return (
         <div className="container">
           <div className="row">
@@ -80,7 +78,7 @@ class Search extends React.Component {
                   <button class="btn" type="submit">Search</button>
                 </form>
               </nav>
-              <BookResults books={this.state.books} />
+              {!isLoaded ? <Loader /> : <BookResults books={this.state.books} />}
             </div>
           </div>
         </div>
