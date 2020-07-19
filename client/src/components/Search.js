@@ -4,61 +4,89 @@ import BookResults from "./BookResults";
 import Navbar from "./Navbar";
 
 class Search extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            books: [],
-            search_term: ""
+  constructor(props) {
+    super(props)
+    this.state = {
+      books: [],
+      search_term: "",
+      error: null,
+      isLoaded: true
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.makeAPICall = this.makeAPICall.bind(this)
+  }
+
+  handleChange(event) {
+    this.setState({ search_term: event.target.value })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    console.log("You entered: " + this.state.search_term)
+    this.setState({
+      isLoaded: false
+    });
+    this.makeAPICall();
+  }
+
+  makeAPICall = () => {
+    console.log("makeAPICall: " + this.state.search_term)
+    debugger;
+    API.getBook(this.state.search_term)
+      .then(
+        (res) => {
+          this.setState({
+            isLoaded: true,
+            books: res.data.items
+          });
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
         }
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.makeAPICall = this.makeAPICall.bind(this)
-    }
+      )
+  }
 
-    handleChange(event) {
-        this.setState({ search_term: event.target.value })
-    }
-
-    handleSubmit(event) {
-        event.preventDefault()
-        console.log("You entered: " + this.state.search_term)
-        this.makeAPICall();
-    }
-
-    makeAPICall = () => {
-        console.log("makeAPICall: " + this.state.search_term)
-        API.getBook(this.state.search_term)
-            .then(res => this.setState({ books: res.data.items }))
-            .then(res => console.log(this.state.books))
-            .catch(err => console.log(err));
-    }
-
-    render() {
-        return (
-            <div className="container">
-                <div className="row">
-                    <div className="col">
-                        <Navbar />
-                        <nav class="navbar">
-                            <a href="/index" class="navbar-brand"><img src={require("../images/Google_Books_logo_2015.svg")} width="100" height="auto" class="d-inline-block align-top" alt="Google Books logo" />
-                            </a>
-                            <form onSubmit={this.handleSubmit} class="form-inline">
-                                <input
-                                    class="form-control mr-sm-2"
-                                    type="search"
-                                    value={this.state.search_term}
-                                    onChange={this.handleChange}
-                                    placeholder="Enter a book title"
-                                    aria-label="Search" />
-                                <button class="btn" type="submit">Search</button>
-                            </form>
-                        </nav>
-                        <BookResults books={this.state.books} />
-                    </div>
-                </div>
+  render() {
+    const { error, isLoaded, books } = this.state;
+    debugger;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      return (
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <Navbar />
+              <nav class="navbar">
+                <a href="/index" class="navbar-brand"><img src={require("../images/Google_Books_logo_2015.svg")} width="100" height="auto" class="d-inline-block align-top" alt="Google Books logo" />
+                </a>
+                <form onSubmit={this.handleSubmit} class="form-inline">
+                  <input
+                    class="form-control mr-sm-2"
+                    type="search"
+                    value={this.state.search_term}
+                    onChange={this.handleChange}
+                    placeholder="Enter a book title"
+                    aria-label="Search" />
+                  <button class="btn" type="submit">Search</button>
+                </form>
+              </nav>
+              <BookResults books={this.state.books} />
             </div>
-        )
+          </div>
+        </div>
+      );
     }
+  }
 }
 
 export default Search;
