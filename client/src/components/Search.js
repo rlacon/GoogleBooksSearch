@@ -36,6 +36,7 @@ class Search extends React.Component {
     API.getBook(this.state.search_term)
       .then(
         (res) => {
+          debugger;
           this.setState({
             isLoaded: true,
             books: res.data.items
@@ -44,19 +45,19 @@ class Search extends React.Component {
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
         // exceptions from actual bugs in components.
-        (error) => {
+        (err) => {
           this.setState({
             isLoaded: true,
-            error
+            err
           });
         }
       )
   }
 
   render() {
-    const { error, isLoaded, books } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
+    const { err, isLoaded, books } = this.state;
+    if (err) {
+      return <div>Error: {err.message}</div>;
     }
     else {
       return (
