@@ -26,6 +26,6 @@
     "react-bootstrap": "^1.2.2",
     "react-dom": "^16.13.1",
     "react-transition-group": "^4.4.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^5.0.1"
   }
 }
